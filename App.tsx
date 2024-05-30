@@ -1,20 +1,17 @@
 import React from 'react';
-import {View} from 'react-native';
-import {TextComponent} from './src/components';
-import {fontFamilies} from './src/constants/fontFamilies';
-import {globalStyles} from './src/styles/globalStyles';
+import HomeScreen from './src/screens/home/HomeScreen';
+import {StatusBar} from 'react-native';
 
 const App = () => {
   return (
-    <View style={[globalStyles.container, globalStyles.center]}>
-      <TextComponent
-        numberOfLine={1}
-        text="Hello work"
-        type="bigTitle"
-        size={22}
-        font={fontFamilies.poppinsBold}
+    <>
+      <StatusBar
+        translucent
+        backgroundColor={'transparent'}
+        barStyle={'dark-content'}
       />
-    </View>
+      <HomeScreen />
+    </>
   );
 };
 
