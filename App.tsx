@@ -1,20 +1,19 @@
-import {View, Text, Button} from 'react-native';
-import React, {useState} from 'react';
+import React from 'react';
+import {View} from 'react-native';
+import {TextComponent} from './src/components';
+import {fontFamilies} from './src/constants/fontFamilies';
+import {globalStyles} from './src/styles/globalStyles';
 
 const App = () => {
-  const [isVie, setisVie] = useState(false);
-
   return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text
-        style={{
-          fontSize: 32,
-          fontFamily: isVie ? 'Roboto-Bold' : 'Poppins-Bold',
-        }}>
-        Lập trình Đào Quang
-      </Text>
-
-      <Button title="Change Font" onPress={() => setisVie(!isVie)} />
+    <View style={[globalStyles.container, globalStyles.center]}>
+      <TextComponent
+        numberOfLine={1}
+        text="Hello work"
+        type="bigTitle"
+        size={22}
+        font={fontFamilies.poppinsBold}
+      />
     </View>
   );
 };
