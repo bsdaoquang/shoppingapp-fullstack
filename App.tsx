@@ -1,17 +1,15 @@
-import React from 'react';
-import HomeScreen from './src/screens/home/HomeScreen';
-import {StatusBar} from 'react-native';
+import React, {useState} from 'react';
+import AuthNavigator from './src/routers/AuthNavigator';
+import MainNavigator from './src/routers/MainNavigator';
+import {NavigationContainer} from '@react-navigation/native';
 
 const App = () => {
+  const [isLogin, setIsLogin] = useState(false);
+
   return (
-    <>
-      <StatusBar
-        translucent
-        backgroundColor={'transparent'}
-        barStyle={'dark-content'}
-      />
-      <HomeScreen />
-    </>
+    <NavigationContainer>
+      {1 > 2 ? <MainNavigator /> : <AuthNavigator />}
+    </NavigationContainer>
   );
 };
 
