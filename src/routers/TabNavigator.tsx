@@ -1,5 +1,5 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Notification, ShoppingCart, User} from 'iconsax-react-native';
+import {Home2, Notification, ShoppingCart, User} from 'iconsax-react-native';
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -11,6 +11,8 @@ import ProfileNavigator from './ProfileNavigator';
 import {Row} from '@bsdaoquang/rncomponent';
 import {TextComponent} from '../components';
 import {fontFamilies} from '../constants/fontFamilies';
+import SvgComponent from '../components/SvgComponent';
+import {svgFile} from '../constants/svgFiles';
 
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
@@ -29,25 +31,55 @@ const TabNavigator = () => {
         },
         tabBarIcon: ({focused, size, color}) => {
           color = focused ? colors.white : colors.dark;
-          size = focused ? 14 : 22;
-          let icon = <Entypo name="home" size={size} color={color} />;
+          size = focused ? 16 : 22;
+          let icon = (
+            <Home2
+              variant={focused ? 'Bold' : 'Bulk'}
+              size={size}
+              color={color}
+            />
+          );
           let name = 'Home';
           switch (route.name) {
             case 'CartTab':
-              icon = <ShoppingCart variant="Bold" color={color} size={size} />;
+              icon = (
+                <ShoppingCart
+                  variant={focused ? 'Bold' : 'Bulk'}
+                  color={color}
+                  size={size}
+                />
+              );
               name = 'Cart';
               break;
 
             case 'NotificationTab':
-              icon = <Notification variant="Bold" color={color} size={size} />;
+              icon = (
+                <Notification
+                  variant={focused ? 'Bold' : 'Bulk'}
+                  color={color}
+                  size={size}
+                />
+              );
               name = 'Notifications';
               break;
             case 'ProfileTab':
-              icon = <User variant="Bold" color={color} size={size} />;
+              icon = (
+                <User
+                  variant={focused ? 'Bold' : 'Bulk'}
+                  color={color}
+                  size={size}
+                />
+              );
               name = 'Profile';
               break;
             default:
-              icon = <Entypo name="home" size={size} color={color} />;
+              icon = (
+                <Home2
+                  variant={focused ? 'Bold' : 'Bulk'}
+                  size={size}
+                  color={color}
+                />
+              );
               name = 'Home';
               break;
           }
