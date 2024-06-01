@@ -8,7 +8,7 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      {1 > 2 ? <MainNavigator /> : <AuthNavigator />}
+      {1 < 2 ? <MainNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 };
