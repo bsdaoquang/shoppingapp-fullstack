@@ -1,4 +1,4 @@
-import {Label} from '@bsdaoquang/rncomponent';
+import {Text} from '@bsdaoquang/rncomponent';
 import React from 'react';
 import {StyleProp, TextStyle} from 'react-native';
 import {sizes} from '../constants/sizes';
@@ -20,7 +20,7 @@ const TextComponent = (props: Props) => {
   const {text, size, font, flex, numberOfLine, color, styles, type} = props;
 
   let fontSize: number = sizes.text;
-  let fontFamily: string = fontFamilies.poppinsRegular;
+
   switch (type) {
     case 'bigTitle':
       fontSize = sizes.bigTitle;
@@ -37,7 +37,7 @@ const TextComponent = (props: Props) => {
   }
 
   return (
-    <Label
+    <Text
       text={text}
       font={font ?? fontFamilies.poppinsRegular}
       flex={flex}
@@ -45,6 +45,9 @@ const TextComponent = (props: Props) => {
       size={size ? size : fontSize}
       color={color ?? colors.dark}
       styles={[{}, styles]}
+      weight={
+        !type || (type !== 'bigTitle' && type !== 'title') ? '400' : 'bold'
+      }
     />
   );
 };

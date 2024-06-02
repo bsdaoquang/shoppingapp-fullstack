@@ -2,8 +2,9 @@ import {Button, Section} from '@bsdaoquang/rncomponent';
 import React from 'react';
 import {ImageBackground, StatusBar, View} from 'react-native';
 import {globalStyles} from '../../styles/globalStyles';
+import {fontFamilies} from '../../constants/fontFamilies';
 
-const HomeAuth = () => {
+const HomeAuth = ({navigation}: any) => {
   return (
     <>
       <StatusBar hidden />
@@ -21,8 +22,11 @@ const HomeAuth = () => {
             textStyleProps={{
               fontWeight: 'bold',
               fontSize: 16,
+              fontFamily: fontFamilies.poppinsBold,
             }}
-            onPress={() => {}}
+            onPress={() =>
+              navigation.navigate('SwiperScreen', {authState: 'Login'})
+            }
           />
           <Button
             color="transparent"
@@ -30,8 +34,11 @@ const HomeAuth = () => {
             styles={{borderColor: 'white'}}
             textStyleProps={{
               fontWeight: '600',
+              fontFamily: fontFamilies.poppinsBold,
             }}
-            onPress={() => {}}
+            onPress={() =>
+              navigation.navigate('SwiperScreen', {authState: 'Signup'})
+            }
           />
         </Section>
       </ImageBackground>
