@@ -1,11 +1,12 @@
-import {View, Text} from 'react-native';
+import {Text} from '@bsdaoquang/rncomponent';
 import React from 'react';
+import {Container} from '../../components';
 
 const Login = () => {
   return (
-    <View>
-      <Text>Login</Text>
-    </View>
+    <Container>
+      <Text text="ffafa" />
+    </Container>
   );
 };
 

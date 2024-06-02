@@ -1,3 +1,4 @@
+import HomeAuth from "./auth/HomeAuth";
 import Login from "./auth/Login";
 import CartScreen from "./cart/CartScreen";
 import HomeScreen from "./home/HomeScreen";
@@ -9,5 +10,6 @@ export {
   Login,
   CartScreen,
   NotificationsScreen,
-  ProfileScreen
+  ProfileScreen,
+  HomeAuth
 };

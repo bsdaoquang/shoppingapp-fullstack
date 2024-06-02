@@ -1,7 +1,7 @@
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Home2, Notification, ShoppingCart, User} from 'iconsax-react-native';
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {Platform, StyleSheet, View} from 'react-native';
 import Entypo from 'react-native-vector-icons/Entypo';
 import {colors} from '../constants/colors';
 import CartNavigator from './CartNavigator';
@@ -26,6 +26,7 @@ const TabNavigator = () => {
           borderTopLeftRadius: 30,
           borderTopRightRadius: 30,
           height: 70,
+          paddingTop: Platform.OS === 'ios' ? 16 : 0,
           justifyContent: 'center',
           alignItems: 'center',
         },

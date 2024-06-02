@@ -1654,17 +1654,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bsdaoquang/rncomponent@npm:^0.0.1":
-  version: 0.0.1
-  resolution: "@bsdaoquang/rncomponent@npm:0.0.1"
+"@bsdaoquang/rncomponent@npm:^0.0.9":
+  version: 0.0.9
+  resolution: "@bsdaoquang/rncomponent@npm:0.0.9"
   dependencies:
     "@react-native-community/checkbox": ^0.5.17
-    iconsax-react-native: ^0.0.8
-    react-native-svg: ^15.3.0
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 45224ddf9f0e8eba0bd4fa056bc9e0945cbc1378482ce9c3d77a196fecf34870248ddf3f49a22e362e8f115a97e2c774aa0c21904193df3dab06de4abdd568d0
+  checksum: 29d108cf9e2d8f3acbc3e3925f02a633a12e969306896a06bf04c67c80c5d5ebb32290c0bc2f3f141d5a922b32c42598ca15c95d642a5c81761b6879803cc3fb
   languageName: node
   linkType: hard
 
@@ -9172,7 +9170,7 @@ __metadata:
     "@babel/core": ^7.20.0
     "@babel/preset-env": ^7.20.0
     "@babel/runtime": ^7.20.0
-    "@bsdaoquang/rncomponent": ^0.0.1
+    "@bsdaoquang/rncomponent": ^0.0.9
     "@react-native/babel-preset": 0.74.83
     "@react-native/eslint-config": 0.74.83
     "@react-native/metro-config": 0.74.83
