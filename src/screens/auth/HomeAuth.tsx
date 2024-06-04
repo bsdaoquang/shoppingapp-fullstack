@@ -37,7 +37,7 @@ const HomeAuth = ({navigation}: any) => {
               fontFamily: fontFamilies.poppinsBold,
             }}
             onPress={() =>
-              navigation.navigate('SwiperScreen', {authState: 'Signup'})
+              navigation.navigate('SwiperScreen', {authState: 'SignUp'})
             }
           />
         </Section>

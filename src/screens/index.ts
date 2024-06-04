@@ -1,5 +1,6 @@
 import HomeAuth from "./auth/HomeAuth";
 import Login from "./auth/Login";
+import SignUp from "./auth/SignUp";
 import SwiperScreen from "./auth/SwiperScreen";
 import CartScreen from "./cart/CartScreen";
 import HomeScreen from "./home/HomeScreen";
@@ -13,5 +14,6 @@ export {
   NotificationsScreen,
   ProfileScreen,
   HomeAuth,
-  SwiperScreen
+  SwiperScreen,
+  SignUp
 };
