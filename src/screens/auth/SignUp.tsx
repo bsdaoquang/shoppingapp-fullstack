@@ -13,6 +13,7 @@ import {Image, Platform} from 'react-native';
 import {Container} from '../../components';
 import {colors} from '../../constants/colors';
 import {fontFamilies} from '../../constants/fontFamilies';
+import {Auth} from '../../utils/handleAuthen';
 
 const initState = {
   username: '',
@@ -55,16 +56,15 @@ const SignUp = ({navigation}: any) => {
         registerForm.email,
         registerForm.password,
       );
-
-      console.log(userCredential);
-
       const user = userCredential.user;
       if (user) {
-        console.log(user);
+        if (registerForm.username) {
+          await user.updateProfile({
+            displayName: registerForm.username,
+          });
+        }
 
-        // save to firestore\
-        // save to localstorage
-        // save to redux
+        await Auth.CreateProfile();
       }
       setIsLoading(false);
     } catch (error: any) {

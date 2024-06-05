@@ -7,13 +7,35 @@ import {colors} from '../../constants/colors';
 import {fontFamilies} from '../../constants/fontFamilies';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {globalStyles} from '../../styles/globalStyles';
+import auth from '@react-native-firebase/auth';
+import {Auth} from '../../utils/handleAuthen';
 
 const Login = ({navigation}: any) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogin = async () => {
-    console.log(email, password);
+    if (email && password) {
+      setIsLoading(true);
+      try {
+        const userCredential = await auth().signInWithEmailAndPassword(
+          email,
+          password,
+        );
+        const user = userCredential.user;
+
+        if (user) {
+          await Auth.UpdateProfile(user);
+        }
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+        setIsLoading(false);
+      }
+    } else {
+      console.log('Missing values');
+    }
   };
 
   return (
@@ -45,7 +67,11 @@ const Login = ({navigation}: any) => {
             labelStyleProps={{
               marginBottom: 0,
             }}
-            styles={{borderBottomColor: colors.dark, borderBottomWidth: 1}}
+            styles={{
+              borderBottomColor: colors.dark,
+              borderBottomWidth: 1,
+              paddingHorizontal: 0,
+            }}
             onChange={val => setEmail(val)}
             placeholder="Email"
             clear
@@ -68,6 +94,7 @@ const Login = ({navigation}: any) => {
             styles={{
               borderBottomColor: colors.dark,
               borderBottomWidth: 1,
+              paddingHorizontal: 0,
             }}
             onChange={val => setPassword(val)}
             placeholder="Password"
@@ -93,6 +120,7 @@ const Login = ({navigation}: any) => {
             textStyleProps={{fontFamily: fontFamilies.poppinsBold}}
             color={colors.dark}
             onPress={handleLogin}
+            loading={isLoading}
           />
         </Section>
 

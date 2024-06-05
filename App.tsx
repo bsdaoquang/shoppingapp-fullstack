@@ -5,7 +5,6 @@ import MainNavigator from './src/routers/MainNavigator';
 import Splash from './src/screens/Splash';
 
 const App = () => {
-  const [isLoging, setIsLoging] = useState(false);
   const [isWellcome, setIsWellcome] = useState(true);
 
   useEffect(() => {
@@ -18,13 +17,7 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      {isWellcome ? (
-        <Splash />
-      ) : isLoging ? (
-        <MainNavigator />
-      ) : (
-        <AuthNavigator />
-      )}
+      {isWellcome ? <Splash /> : 1 > 2 ? <MainNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 };
