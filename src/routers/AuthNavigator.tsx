@@ -1,6 +1,6 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {HomeAuth, Login, SignUp, SwiperScreen} from '../screens';
+import {HomeAuth, Login, Result, SignUp, SwiperScreen} from '../screens';
 import {StatusBar} from 'react-native';
 
 const AuthNavigator = () => {
@@ -14,6 +14,7 @@ const AuthNavigator = () => {
         <Stack.Screen name="SwiperScreen" component={SwiperScreen} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="Result" component={Result} />
       </Stack.Navigator>
     </>
   );

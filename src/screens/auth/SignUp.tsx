@@ -63,8 +63,8 @@ const SignUp = ({navigation}: any) => {
             displayName: registerForm.username,
           });
         }
-
         await Auth.CreateProfile();
+        navigation.navigate('Result');
       }
       setIsLoading(false);
     } catch (error: any) {

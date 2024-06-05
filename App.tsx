@@ -1,23 +1,15 @@
 import {NavigationContainer} from '@react-navigation/native';
-import React, {useEffect, useState} from 'react';
-import AuthNavigator from './src/routers/AuthNavigator';
-import MainNavigator from './src/routers/MainNavigator';
-import Splash from './src/screens/Splash';
+import React from 'react';
+import {Provider} from 'react-redux';
+import store from './src/redux/store';
+import Router from './src/routers/Router';
 
 const App = () => {
-  const [isWellcome, setIsWellcome] = useState(true);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIsWellcome(false);
-    }, 1500);
-
-    return () => clearTimeout(timeout);
-  }, []);
-
   return (
     <NavigationContainer>
-      {isWellcome ? <Splash /> : 1 > 2 ? <MainNavigator /> : <AuthNavigator />}
+      <Provider store={store}>
+        <Router />
+      </Provider>
     </NavigationContainer>
   );
 };
