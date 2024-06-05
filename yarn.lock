@@ -1654,16 +1654,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bsdaoquang/rncomponent@npm:^0.1.1":
-  version: 0.1.1
-  resolution: "@bsdaoquang/rncomponent@npm:0.1.1"
+"@bsdaoquang/rncomponent@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "@bsdaoquang/rncomponent@npm:0.1.2"
   dependencies:
     "@react-native-community/checkbox": ^0.5.17
     react-native-vector-icons: ^10.1.0
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 72e011d332ae7e09003fced40ead6120b74ebccfb74f94e33fb116548369ae4dc2e3a5304b675f61ca1dc4f0403a33b0d7ea5d3df4107753ba508fd61752efa6
+  checksum: cde031a87b71a9265caf6e93d0e95e9b8a6136bf610670366a8b7c236b9f10659f2958569906e5e315bff02c3a3a93aa85230e0b79c5372dc19a96ae48bc1140
   languageName: node
   linkType: hard
 
@@ -9080,6 +9080,47 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rhino@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "rhino@workspace:."
+  dependencies:
+    "@babel/core": ^7.20.0
+    "@babel/preset-env": ^7.20.0
+    "@babel/runtime": ^7.20.0
+    "@bsdaoquang/rncomponent": ^0.1.2
+    "@react-native-firebase/app": ^20.1.0
+    "@react-native-firebase/auth": ^20.1.0
+    "@react-native-firebase/firestore": ^20.1.0
+    "@react-native-firebase/messaging": ^20.1.0
+    "@react-native-firebase/storage": ^20.1.0
+    "@react-native/babel-preset": 0.74.83
+    "@react-native/eslint-config": 0.74.83
+    "@react-native/metro-config": 0.74.83
+    "@react-native/typescript-config": 0.74.83
+    "@react-navigation/bottom-tabs": ^6.5.20
+    "@react-navigation/native": ^6.1.17
+    "@react-navigation/native-stack": ^6.9.26
+    "@types/react": ^18.2.6
+    "@types/react-native-vector-icons": ^6.4.18
+    "@types/react-test-renderer": ^18.0.0
+    babel-jest: ^29.6.3
+    eslint: ^8.19.0
+    iconsax-react-native: ^0.0.8
+    jest: ^29.6.3
+    prettier: 2.8.8
+    react: 18.2.0
+    react-native: 0.74.1
+    react-native-safe-area-context: ^4.10.3
+    react-native-screens: ^3.31.1
+    react-native-svg: ^15.3.0
+    react-native-svg-transformer: ^1.4.0
+    react-native-swiper: ^1.6.0
+    react-native-vector-icons: ^10.1.0
+    react-test-renderer: 18.2.0
+    typescript: 5.0.4
+  languageName: unknown
+  linkType: soft
+
 "rimraf@npm:^3.0.2":
   version: 3.0.2
   resolution: "rimraf@npm:3.0.2"
@@ -9332,47 +9373,6 @@ __metadata:
   checksum: 5f01201f4ef504d4c6a9d0d283fa17075f6770bfbe4c5850b074974c68062f37929ca61700d95ad2ac8822e14e8c4b990ca0e6e9272e64befd74ce5e19f0736b
   languageName: node
   linkType: hard
-
-"shoppingapp@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "shoppingapp@workspace:."
-  dependencies:
-    "@babel/core": ^7.20.0
-    "@babel/preset-env": ^7.20.0
-    "@babel/runtime": ^7.20.0
-    "@bsdaoquang/rncomponent": ^0.1.1
-    "@react-native-firebase/app": ^20.1.0
-    "@react-native-firebase/auth": ^20.1.0
-    "@react-native-firebase/firestore": ^20.1.0
-    "@react-native-firebase/messaging": ^20.1.0
-    "@react-native-firebase/storage": ^20.1.0
-    "@react-native/babel-preset": 0.74.83
-    "@react-native/eslint-config": 0.74.83
-    "@react-native/metro-config": 0.74.83
-    "@react-native/typescript-config": 0.74.83
-    "@react-navigation/bottom-tabs": ^6.5.20
-    "@react-navigation/native": ^6.1.17
-    "@react-navigation/native-stack": ^6.9.26
-    "@types/react": ^18.2.6
-    "@types/react-native-vector-icons": ^6.4.18
-    "@types/react-test-renderer": ^18.0.0
-    babel-jest: ^29.6.3
-    eslint: ^8.19.0
-    iconsax-react-native: ^0.0.8
-    jest: ^29.6.3
-    prettier: 2.8.8
-    react: 18.2.0
-    react-native: 0.74.1
-    react-native-safe-area-context: ^4.10.3
-    react-native-screens: ^3.31.1
-    react-native-svg: ^15.3.0
-    react-native-svg-transformer: ^1.4.0
-    react-native-swiper: ^1.6.0
-    react-native-vector-icons: ^10.1.0
-    react-test-renderer: 18.2.0
-    typescript: 5.0.4
-  languageName: unknown
-  linkType: soft
 
 "side-channel@npm:^1.0.4, side-channel@npm:^1.0.6":
   version: 1.0.6

@@ -1,19 +1,18 @@
 import {
   Button,
-  CheckboxItem,
   Input,
   Row,
   Section,
   Space,
   Text,
 } from '@bsdaoquang/rncomponent';
+import auth from '@react-native-firebase/auth';
 import {TickCircle, TickSquare} from 'iconsax-react-native';
-import React, {useState} from 'react';
-import {Image, ScrollView} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {Image, Platform} from 'react-native';
 import {Container} from '../../components';
 import {colors} from '../../constants/colors';
 import {fontFamilies} from '../../constants/fontFamilies';
-import {globalStyles} from '../../styles/globalStyles';
 
 const initState = {
   username: '',
@@ -24,6 +23,18 @@ const initState = {
 
 const SignUp = ({navigation}: any) => {
   const [registerForm, setRegisterForm] = useState(initState);
+  const [isDisable, setIsDisable] = useState(true);
+  const [errorText, setErrorText] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    const {email, password, confirm} = registerForm;
+    if (password && confirm) {
+      setErrorText(password !== confirm ? 'Password is not match!!' : '');
+    }
+
+    setIsDisable(false);
+  }, [registerForm]);
 
   const handleChangeForm = (val: string, key: string) => {
     const items: any = {...registerForm};
@@ -38,7 +49,44 @@ const SignUp = ({navigation}: any) => {
   };
 
   const createNewAccount = async () => {
-    console.log(registerForm);
+    setIsLoading(true);
+    try {
+      const userCredential = await auth().createUserWithEmailAndPassword(
+        registerForm.email,
+        registerForm.password,
+      );
+
+      console.log(userCredential);
+
+      const user = userCredential.user;
+      if (user) {
+        console.log(user);
+
+        // save to firestore\
+        // save to localstorage
+        // save to redux
+      }
+      setIsLoading(false);
+    } catch (error: any) {
+      console.log(error);
+      setErrorText(error.message);
+      setIsLoading(false);
+    }
+  };
+
+  const renderButtonRegister = () => {
+    return (
+      <Button
+        loading={isLoading}
+        disable={isDisable}
+        isShadow={false}
+        title="Sign Up"
+        textStyleProps={{fontFamily: fontFamilies.poppinsBold}}
+        color={colors.dark}
+        inline
+        onPress={createNewAccount}
+      />
+    );
   };
 
   return (
@@ -52,7 +100,12 @@ const SignUp = ({navigation}: any) => {
         </Row>
       </Section>
       <Section>
-        <Text text="Sign Up" font={fontFamilies.poppinsBold} size={18} />
+        <Text
+          text="Sign Up"
+          weight={'700'}
+          font={fontFamilies.poppinsBold}
+          size={Platform.OS === 'ios' ? 20 : 18}
+        />
         <Text text="Create an new account" color={colors.description} />
       </Section>
       <>
@@ -65,7 +118,11 @@ const SignUp = ({navigation}: any) => {
             labelStyleProps={{
               marginBottom: 0,
             }}
-            styles={{borderBottomColor: colors.dark, borderBottomWidth: 1}}
+            styles={{
+              borderBottomColor: colors.dark,
+              borderBottomWidth: 1,
+              paddingHorizontal: 0,
+            }}
             onChange={val => handleChangeForm(val, 'username')}
             placeholder="User name"
             clear
@@ -81,7 +138,11 @@ const SignUp = ({navigation}: any) => {
             labelStyleProps={{
               marginBottom: 0,
             }}
-            styles={{borderBottomColor: colors.dark, borderBottomWidth: 1}}
+            styles={{
+              borderBottomColor: colors.dark,
+              borderBottomWidth: 1,
+              paddingHorizontal: 0,
+            }}
             onChange={val => handleChangeForm(val, 'email')}
             placeholder="Email"
             clear
@@ -107,6 +168,7 @@ const SignUp = ({navigation}: any) => {
             styles={{
               borderBottomColor: colors.dark,
               borderBottomWidth: 1,
+              paddingHorizontal: 0,
             }}
             onChange={val => {
               handleChangeForm(val, 'password');
@@ -126,6 +188,7 @@ const SignUp = ({navigation}: any) => {
             styles={{
               borderBottomColor: colors.dark,
               borderBottomWidth: 1,
+              paddingHorizontal: 0,
             }}
             onChange={val => {
               handleChangeForm(val, 'confirm');
@@ -134,7 +197,11 @@ const SignUp = ({navigation}: any) => {
             label="Confirm"
           />
         </Section>
-
+        {errorText && (
+          <Section>
+            <Text text={errorText} color={'coral'} />
+          </Section>
+        )}
         <Section>
           <Row alignItems="flex-start">
             <TickSquare size={20} variant="Bold" color={colors.description} />
@@ -146,15 +213,7 @@ const SignUp = ({navigation}: any) => {
           </Row>
         </Section>
 
-        <Section>
-          <Button
-            title="Sign Up"
-            textStyleProps={{fontFamily: fontFamilies.poppinsBold}}
-            color={colors.dark}
-            inline
-            onPress={createNewAccount}
-          />
-        </Section>
+        <Section>{renderButtonRegister()}</Section>
 
         <Row styles={{paddingHorizontal: 16, marginBottom: 16}}>
           <Text text="You have account? " />
