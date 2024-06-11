@@ -8,5 +8,11 @@ export const globalStyles = StyleSheet.create({
   center: {
     justifyContent: 'center',
     alignItems: 'center',
+  },
+
+  avatar: {
+    width: 50,
+    height: 50,
+    borderRadius: 100
   }
 }); 

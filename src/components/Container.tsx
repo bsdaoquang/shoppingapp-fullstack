@@ -26,7 +26,7 @@ const Container = (props: Props) => {
 
   return (
     <SafeAreaView style={[globalStyles.container]}>
-      {(back || left || title || right) && (
+      {back || left || title || right ? (
         <Row
           styles={{
             paddingHorizontal: 16,
@@ -48,6 +48,13 @@ const Container = (props: Props) => {
           </View>
           {right && right}
         </Row>
+      ) : (
+        <View
+          style={{
+            paddingTop:
+              Platform.OS === 'android' ? StatusBar.currentHeight : 42,
+          }}
+        />
       )}
 
       {!isScroll && isScroll !== false ? (
