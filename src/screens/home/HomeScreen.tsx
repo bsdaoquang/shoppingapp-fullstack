@@ -7,6 +7,8 @@ import Avatar from '../../components/Avatar';
 import {colors} from '../../constants/colors';
 import ArrivalsProduct from './components/ArrivalsProduct';
 import OffersList from './components/OffersList';
+import CategoriesList from './components/CategoriesList';
+import PopularProduct from './components/PopularProduct';
 
 const HomeScreen = () => {
   return (
@@ -58,9 +60,11 @@ const HomeScreen = () => {
         </>
         <OffersList />
         <Space height={20} />
-        <TextComponent text="fafa" />
+        <CategoriesList />
         <Space height={20} />
         <ArrivalsProduct />
+        <Space height={20} />
+        <PopularProduct />
       </ScrollView>
     </Container>
   );

@@ -1,10 +1,9 @@
-import {Row, Tabbar} from '@bsdaoquang/rncomponent';
+import {Button, Tabbar} from '@bsdaoquang/rncomponent';
 import React, {useEffect, useState} from 'react';
 import {FlatList, View} from 'react-native';
 import {ProductItem, TextComponent} from '../../../components';
 import {colors} from '../../../constants/colors';
 import {fontFamilies} from '../../../constants/fontFamilies';
-import {sizes} from '../../../constants/sizes';
 import {productRef} from '../../../firebase/firebaseConfig';
 import {ProductModel} from '../../../models/ProductModel';
 
