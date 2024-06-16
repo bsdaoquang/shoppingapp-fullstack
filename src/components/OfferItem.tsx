@@ -1,13 +1,11 @@
-import {View, Text, ImageBackground, StyleSheet} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {OfferModel} from '../models/OfferModel';
-import firestore from '@react-native-firebase/firestore';
-import {FileModel} from '../models/FileModel';
-import {sizes} from '../constants/sizes';
-import TextComponent from './TextComponent';
-import {fontFamilies} from '../constants/fontFamilies';
-import {colors} from '../constants/colors';
 import {Button, Row} from '@bsdaoquang/rncomponent';
+import React from 'react';
+import {ImageBackground, StyleSheet, View} from 'react-native';
+import {colors} from '../constants/colors';
+import {fontFamilies} from '../constants/fontFamilies';
+import {sizes} from '../constants/sizes';
+import {OfferModel} from '../models/OfferModel';
+import TextComponent from './TextComponent';
 
 type Props = {
   item: OfferModel;
@@ -15,27 +13,6 @@ type Props = {
 
 const OfferItem = (props: Props) => {
   const {item} = props;
-  const [fileInfo, setFileInfo] = useState<FileModel>();
-
-  useEffect(() => {
-    if (item.files && item.files.length > 0) {
-      handleGetImageInfo(item.files[0]);
-    }
-  }, [item]);
-
-  const handleGetImageInfo = async (id: string) => {
-    try {
-      const snap: any = await firestore().collection('files').doc(id).get();
-      if (snap.exists) {
-        setFileInfo({
-          id,
-          ...snap.data(),
-        });
-      }
-    } catch (error: any) {
-      console.log(error);
-    }
-  };
 
   const renderOfferChildren = () => (
     <>
@@ -63,9 +40,9 @@ const OfferItem = (props: Props) => {
     </>
   );
 
-  return fileInfo ? (
+  return item.imageUrl ? (
     <ImageBackground
-      source={{uri: fileInfo.downloadUrl}}
+      source={{uri: item.imageUrl}}
       style={localstyles.container}
       imageStyle={{flex: 1, resizeMode: 'cover', borderRadius: 20}}>
       {renderOfferChildren()}

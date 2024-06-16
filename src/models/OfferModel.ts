@@ -7,4 +7,5 @@ export interface OfferModel {
   percent: string;
   startAt: number;
   title: string;
+  imageUrl: string;
 }

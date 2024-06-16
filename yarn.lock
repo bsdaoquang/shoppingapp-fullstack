@@ -1654,16 +1654,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bsdaoquang/rncomponent@npm:^0.1.2":
-  version: 0.1.2
-  resolution: "@bsdaoquang/rncomponent@npm:0.1.2"
+"@bsdaoquang/rncomponent@npm:^0.1.13":
+  version: 0.1.13
+  resolution: "@bsdaoquang/rncomponent@npm:0.1.13"
   dependencies:
     "@react-native-community/checkbox": ^0.5.17
     react-native-vector-icons: ^10.1.0
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: cde031a87b71a9265caf6e93d0e95e9b8a6136bf610670366a8b7c236b9f10659f2958569906e5e315bff02c3a3a93aa85230e0b79c5372dc19a96ae48bc1140
+  checksum: 3a277d0fd8fae0831318da7b048924a7cf7d191ee44291cda0ca8f9ebd977be30c6dc52ae0e82ef007e82ed2ce1c7abb7e37d95d0e59c3c2eab50eb504f7664a
   languageName: node
   linkType: hard
 
@@ -9190,7 +9190,7 @@ __metadata:
     "@babel/core": ^7.20.0
     "@babel/preset-env": ^7.20.0
     "@babel/runtime": ^7.20.0
-    "@bsdaoquang/rncomponent": ^0.1.2
+    "@bsdaoquang/rncomponent": ^0.1.13
     "@react-native-async-storage/async-storage": ^1.23.1
     "@react-native-firebase/app": ^20.1.0
     "@react-native-firebase/auth": ^20.1.0

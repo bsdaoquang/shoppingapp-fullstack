@@ -44,7 +44,7 @@ const TextComponent = (props: Props) => {
       numberOfLine={numberOfLine}
       size={size ? size : fontSize}
       color={color ?? colors.dark}
-      styles={[{}, styles]}
+      styles={[{lineHeight: size ? size + 4 : fontSize + 4}, styles]}
       weight={
         !type || (type !== 'bigTitle' && type !== 'title') ? '400' : 'bold'
       }
