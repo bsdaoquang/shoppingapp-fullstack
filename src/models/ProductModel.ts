@@ -13,3 +13,13 @@ export interface ProductModel {
   updatedAt: number;
   rate: string;
 }
+
+export interface SubProduct {
+  color: string;
+  files: string[];
+  id: string;
+  imageUrl: string;
+  price: string;
+  productId: string;
+  size: string;
+}

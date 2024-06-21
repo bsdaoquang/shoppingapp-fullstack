@@ -1,16 +1,15 @@
 import {Button, Input, Row, Section, Space} from '@bsdaoquang/rncomponent';
+import messaging from '@react-native-firebase/messaging';
 import {HambergerMenu, SearchNormal1, Setting4} from 'iconsax-react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {ScrollView, View} from 'react-native';
 import {Container, TextComponent} from '../../components';
 import Avatar from '../../components/Avatar';
 import {colors} from '../../constants/colors';
 import ArrivalsProduct from './components/ArrivalsProduct';
-import OffersList from './components/OffersList';
 import CategoriesList from './components/CategoriesList';
+import OffersList from './components/OffersList';
 import PopularProduct from './components/PopularProduct';
-import {HandleNotification} from '../../utils/handleNotification';
-import messaging from '@react-native-firebase/messaging';
 
 const HomeScreen = () => {
   useEffect(() => {
@@ -33,20 +32,6 @@ const HomeScreen = () => {
           <Avatar />
         </Row>
       </Section>
-      {/* <Button
-        title="Get accesstoken"
-        onPress={() =>
-          HandleNotification.pushNotification(
-            '01VMq3EF8WWeeKQu5P5vFwoIRDr1',
-            {
-              title: 'agagasg',
-              body: 'gasgasg',
-            },
-            {id: '12345'},
-          )
-        }
-      /> */}
-
       <ScrollView showsVerticalScrollIndicator={false} style={{flex: 1}}>
         <>
           <Section>
