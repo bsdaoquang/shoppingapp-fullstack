@@ -1,4 +1,4 @@
-import { FirebaseFirestoreTypes } from "@react-native-firebase/firestore";
+import { FileModel } from "./FileModel";
 
 export interface ProductModel {
   id: string;
@@ -16,10 +16,11 @@ export interface ProductModel {
 
 export interface SubProduct {
   color: string;
-  files: string[];
+  files: FileModel[];
   id: string;
   imageUrl: string;
   price: string;
   productId: string;
-  size: string;
+  size: string[];
+  quantity: number;
 }
