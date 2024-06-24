@@ -17,11 +17,14 @@ import {TextComponent} from '../../components';
 import {productRef} from '../../firebase/firebaseConfig';
 import {ProductModel, SubProduct} from '../../models/ProductModel';
 // import {globalStyles} from '../../styles/globalStyles';
+import {Add, Minus} from 'iconsax-react-native';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
+import {fontFamilies} from '../../constants/fontFamilies';
 import {useStatusBar} from '../../utils/useStatusBar';
 import ImageSwiper from './components/ImageSwiper';
-import {fontFamilies} from '../../constants/fontFamilies';
-import {Add, Check, Minus, TickSquare} from 'iconsax-react-native';
-import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
+import RatingComponent from './components/RatingComponent';
+import {useDispatch, useSelector} from 'react-redux';
+import {addcart, cartSelector} from '../../redux/reducers/cartReducer';
 
 const ProductDetail = ({navigation, route}: any) => {
   const {id} = route.params;
@@ -31,6 +34,11 @@ const ProductDetail = ({navigation, route}: any) => {
   const [subProductSelected, setSubProductSelected] = useState<SubProduct>();
   const [count, setCount] = useState(1);
   const [sizeSelected, setSizeSelected] = useState('');
+
+  const cartData = useSelector(cartSelector);
+  const dispatch = useDispatch();
+
+  console.log(cartData);
 
   useStatusBar('light-content');
 
@@ -80,6 +88,51 @@ const ProductDetail = ({navigation, route}: any) => {
     }
   };
 
+  const handleAddToCard = (item: SubProduct) => {
+    const data = {
+      id: item.id,
+      title: productDetail?.title,
+      size: sizeSelected,
+      quantity: count,
+      description: productDetail?.description,
+      color: item.color,
+      price: item.price,
+      imageUrl: item.imageUrl,
+    };
+
+    const sub: any = {...subProductSelected};
+    sub.quantity = subProductSelected
+      ? subProductSelected?.quantity - count
+      : 0;
+
+    dispatch(addcart(data));
+
+    setSubProductSelected(sub);
+  };
+
+  const renderCartButton = () => {
+    const itemCart = cartData.findIndex(
+      (element: any) => element.id === subProductSelected?.id,
+    );
+
+    return (
+      subProductSelected && (
+        <Button
+          disable={subProductSelected.quantity === 0}
+          icon={<FontAwesome6 name="bag-shopping" size={18} color={'white'} />}
+          inline
+          onPress={
+            itemCart !== -1
+              ? () => navigation.navigate('CartScreen')
+              : () => handleAddToCard(subProductSelected)
+          }
+          color={colors.black}
+          title={itemCart !== -1 ? 'Checkout' : 'Add to cart'}
+        />
+      )
+    );
+  };
+
   return (
     <View style={[globalStyles.container, {backgroundColor: 'white'}]}>
       <View style={[globalStyles.container]}>
@@ -114,7 +167,7 @@ const ProductDetail = ({navigation, route}: any) => {
                 color={colors.white}
               />
             </TouchableOpacity>
-            <Badge count={0}>
+            <Badge count={cartData.length}>
               <TouchableOpacity
                 style={[
                   globalStyles.center,
@@ -153,6 +206,7 @@ const ProductDetail = ({navigation, route}: any) => {
                   color={colors.gray}
                   styles={{paddingVertical: 8}}
                 />
+                <RatingComponent id={id} />
               </Col>
               <View>
                 <Row justifyContent="flex-end">
@@ -206,6 +260,7 @@ const ProductDetail = ({navigation, route}: any) => {
                       subProductSelected.size.length > 0 &&
                       subProductSelected.size.map((itemSize, index) => (
                         <Button
+                          key={itemSize}
                           color={
                             itemSize === sizeSelected ? colors.black : undefined
                           }
@@ -285,24 +340,22 @@ const ProductDetail = ({navigation, route}: any) => {
       <Section styles={{backgroundColor: 'white'}}>
         <Row>
           <Col>
-            <TextComponent text="Total price:" size={12} color={colors.gray} />
-            <TextComponent
-              text={`$123.00`}
-              size={24}
-              font={fontFamilies.poppinsBold}
-            />
+            {subProductSelected && count && (
+              <>
+                <TextComponent
+                  text="Total price:"
+                  size={12}
+                  color={colors.gray}
+                />
+                <TextComponent
+                  text={`$${count * parseFloat(subProductSelected.price)}`}
+                  size={24}
+                  font={fontFamilies.poppinsBold}
+                />
+              </>
+            )}
           </Col>
-          <Col>
-            <Button
-              icon={
-                <FontAwesome6 name="bag-shopping" size={18} color={'white'} />
-              }
-              inline
-              onPress={() => {}}
-              color={colors.black}
-              title="Add to cart"
-            />
-          </Col>
+          <Col>{renderCartButton()}</Col>
         </Row>
       </Section>
     </View>

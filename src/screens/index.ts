@@ -6,6 +6,7 @@ import SwiperScreen from "./auth/SwiperScreen";
 import CartScreen from "./cart/CartScreen";
 import HomeScreen from "./home/HomeScreen";
 import ProductDetail from "./home/ProductDetail";
+import RatingScreen from "./home/RatingScreen";
 import NotificationsScreen from "./notifications/NotificationsScreen";
 import ProfileScreen from "./profiles/ProfileScreen";
 
@@ -19,5 +20,6 @@ export {
   SwiperScreen,
   SignUp,
   Result,
-  ProductDetail
+  ProductDetail,
+  RatingScreen
 };
