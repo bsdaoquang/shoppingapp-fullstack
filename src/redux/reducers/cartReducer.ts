@@ -5,10 +5,23 @@ const handleSyncCardData = async (data: any[]) => {
   await AsyncStorage.setItem('cart', JSON.stringify(data));
 };
 
+export interface CartItem {
+  color: string;
+  description: string;
+  id: string;
+  imageUrl: string;
+  price: string;
+  quantity: number;
+  size: string;
+  title: string;
+}
+
+const initialState: CartItem[] = [];
+
 const cartSlicer = createSlice({
   name: 'cart',
   initialState: {
-    cartData: []
+    cartData: initialState
   },
   reducers: {
     addcart: (state, action) => {
@@ -27,10 +40,13 @@ const cartSlicer = createSlice({
     },
     removecart: (state, action) => {
       state.cartData = [];
+    },
+    syncLocalStorage: (state, action) => {
+      state.cartData = action.payload;
     }
   }
 });
 
 export const cartReducer = cartSlicer.reducer;
-export const { addcart, removecart } = cartSlicer.actions;
+export const { addcart, removecart, syncLocalStorage } = cartSlicer.actions;
 export const cartSelector = (state: any) => state.cartReducer.cartData;

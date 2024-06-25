@@ -1,3 +1,4 @@
 export const localDataNames = {
-  auth: 'authData'
+  auth: 'authData',
+  cart: 'cart'
 };

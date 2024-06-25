@@ -10,6 +10,7 @@ import ArrivalsProduct from './components/ArrivalsProduct';
 import CategoriesList from './components/CategoriesList';
 import OffersList from './components/OffersList';
 import PopularProduct from './components/PopularProduct';
+import {useStatusBar} from '../../utils/useStatusBar';
 
 const HomeScreen = () => {
   useEffect(() => {
@@ -17,6 +18,8 @@ const HomeScreen = () => {
       console.log(mess);
     });
   }, []);
+
+  useStatusBar('dark-content');
 
   return (
     <Container isScroll={false}>
