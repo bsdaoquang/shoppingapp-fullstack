@@ -4,6 +4,7 @@ import Result from "./auth/Result";
 import SignUp from "./auth/SignUp";
 import SwiperScreen from "./auth/SwiperScreen";
 import CartScreen from "./cart/CartScreen";
+import MyOrder from "./cart/MyOrder";
 import HomeScreen from "./home/HomeScreen";
 import ProductDetail from "./home/ProductDetail";
 import RatingScreen from "./home/RatingScreen";
@@ -21,5 +22,6 @@ export {
   SignUp,
   Result,
   ProductDetail,
-  RatingScreen
+  RatingScreen,
+  MyOrder
 };

@@ -190,7 +190,7 @@ const ProductDetail = ({navigation, route}: any) => {
                   height: 38,
                 },
               ]}
-              onPress={() => navigation.goBack()}>
+              onPress={() => navigation.navigate('CartScreen')}>
               <MaterialCommunityIcons
                 name="shopping"
                 size={22}

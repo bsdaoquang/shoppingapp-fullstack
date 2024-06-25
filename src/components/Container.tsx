@@ -8,9 +8,11 @@ import {
 } from 'react-native';
 import React, {ReactNode} from 'react';
 import {globalStyles} from '../styles/globalStyles';
-import {Row} from '@bsdaoquang/rncomponent';
+import {Button, Row, colors} from '@bsdaoquang/rncomponent';
 import TextComponent from './TextComponent';
 import {fontFamilies} from '../constants/fontFamilies';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import {useNavigation} from '@react-navigation/native';
 
 type Props = {
   children: ReactNode;
@@ -24,6 +26,8 @@ type Props = {
 const Container = (props: Props) => {
   const {children, title, back, left, right, isScroll} = props;
 
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView style={[globalStyles.container]}>
       {back || left || title || right ? (
@@ -32,9 +36,33 @@ const Container = (props: Props) => {
             paddingHorizontal: 16,
             paddingVertical: 16,
             paddingTop:
-              Platform.OS === 'android' ? StatusBar.currentHeight : 42,
+              Platform.OS === 'android'
+                ? StatusBar.currentHeight
+                  ? StatusBar.currentHeight + 16
+                  : 42
+                : 42,
           }}>
-          {back && <TextComponent text="Back" />}
+          {back && (
+            <Button
+              inline
+              styles={{
+                width: 42,
+                height: 42,
+                paddingHorizontal: 0,
+                paddingVertical: 0,
+              }}
+              isShadow={false}
+              icon={
+                <MaterialIcons
+                  name="arrow-back-ios-new"
+                  size={22}
+                  color={'white'}
+                />
+              }
+              color={colors.black}
+              onPress={() => navigation.canGoBack() && navigation.goBack()}
+            />
+          )}
           {left && !back && <TextComponent text="Left" />}
 
           <View style={[{paddingHorizontal: 16, flex: 1}]}>
