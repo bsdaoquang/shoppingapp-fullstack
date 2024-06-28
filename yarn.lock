@@ -8772,6 +8772,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-swipeable-list@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "react-native-swipeable-list@npm:0.1.2"
+  peerDependencies:
+    react: ">=16.11.0"
+    react-native: ">=0.61.4"
+  checksum: 2ad2ab2d7c1f44dc81525a96b8542b62d4802af1703414afeaefe11a6819d18e8572bdaa8c96332bca64ecbb6c2b7e4644efbaa9006f69276b480bac74d7835a
+  languageName: node
+  linkType: hard
+
 "react-native-swiper@npm:^1.6.0":
   version: 1.6.0
   resolution: "react-native-swiper@npm:1.6.0"
@@ -9232,6 +9242,7 @@ __metadata:
     react-native-screens: ^3.31.1
     react-native-svg: ^15.3.0
     react-native-svg-transformer: ^1.4.0
+    react-native-swipeable-list: ^0.1.2
     react-native-swiper: ^1.6.0
     react-native-vector-icons: ^10.1.0
     react-redux: ^9.1.2

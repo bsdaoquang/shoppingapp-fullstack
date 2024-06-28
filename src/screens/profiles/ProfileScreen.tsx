@@ -7,7 +7,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {localDataNames} from '../../constants/localDataNames';
 import {removeAuth} from '../../redux/reducers/authReducer';
 
-const ProfileScreen = () => {
+const ProfileScreen = ({navigation}: any) => {
   const dispatch = useDispatch();
   return (
     <View>
@@ -19,6 +19,10 @@ const ProfileScreen = () => {
           await AsyncStorage.removeItem(localDataNames.auth);
           dispatch(removeAuth({}));
         }}
+      />
+      <Button
+        title="My order"
+        onPress={() => navigation.navigate('CartScreen')}
       />
     </View>
   );
