@@ -2,7 +2,7 @@ import {Button, Input, Row, Section, Space} from '@bsdaoquang/rncomponent';
 import messaging from '@react-native-firebase/messaging';
 import {HambergerMenu, SearchNormal1, Setting4} from 'iconsax-react-native';
 import React, {useEffect} from 'react';
-import {ScrollView, View} from 'react-native';
+import {PermissionsAndroid, Platform, ScrollView, View} from 'react-native';
 import {Container, TextComponent} from '../../components';
 import Avatar from '../../components/Avatar';
 import {colors} from '../../constants/colors';
@@ -14,6 +14,11 @@ import {useStatusBar} from '../../utils/useStatusBar';
 
 const HomeScreen = () => {
   useEffect(() => {
+    if (Platform.OS === 'android') {
+      PermissionsAndroid.requestMultiple([
+        PermissionsAndroid.PERMISSIONS.ACCESS_COARSE_LOCATION,
+      ]);
+    }
     messaging().onMessage(mess => {
       console.log(mess);
     });

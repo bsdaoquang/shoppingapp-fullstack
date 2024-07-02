@@ -24,6 +24,10 @@ const ProfileScreen = ({navigation}: any) => {
         title="My order"
         onPress={() => navigation.navigate('CartScreen')}
       />
+      <Button
+        title="My address"
+        onPress={() => navigation.navigate('Address')}
+      />
     </View>
   );
 };

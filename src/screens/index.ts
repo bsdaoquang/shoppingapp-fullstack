@@ -3,8 +3,10 @@ import Login from "./auth/Login";
 import Result from "./auth/Result";
 import SignUp from "./auth/SignUp";
 import SwiperScreen from "./auth/SwiperScreen";
+import AddPayment from "./cart/AddPayment";
 import CartScreen from "./cart/CartScreen";
 import MyOrder from "./cart/MyOrder";
+import Payment from "./cart/Payment";
 import HomeScreen from "./home/HomeScreen";
 import ProductDetail from "./home/ProductDetail";
 import RatingScreen from "./home/RatingScreen";
@@ -23,5 +25,7 @@ export {
   Result,
   ProductDetail,
   RatingScreen,
-  MyOrder
+  MyOrder,
+  Payment,
+  AddPayment
 };

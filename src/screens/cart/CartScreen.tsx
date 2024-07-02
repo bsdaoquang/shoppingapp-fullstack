@@ -148,7 +148,7 @@ const CartScreen = ({navigation}: any) => {
             <Button
               color={colors.dark}
               title={'Proceed to Checkout'}
-              onPress={() => {}}
+              onPress={() => navigation.navigate('Payment')}
               iconPosition="right"
               iconExtra
               icon={<ArrowRight2 size={20} color="white" />}

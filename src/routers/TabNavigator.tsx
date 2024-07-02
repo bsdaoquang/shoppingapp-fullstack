@@ -1,24 +1,22 @@
+import {Row} from '@bsdaoquang/rncomponent';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Home2, Notification, ShoppingCart, User} from 'iconsax-react-native';
 import React from 'react';
 import {Platform, StyleSheet, View} from 'react-native';
-import Entypo from 'react-native-vector-icons/Entypo';
+import {TextComponent} from '../components';
 import {colors} from '../constants/colors';
+import {fontFamilies} from '../constants/fontFamilies';
 import CartNavigator from './CartNavigator';
 import HomeNavigator from './HomeNavigator';
 import NotificationNavigator from './NotificationNavigator';
 import ProfileNavigator from './ProfileNavigator';
-import {Row} from '@bsdaoquang/rncomponent';
-import {TextComponent} from '../components';
-import {fontFamilies} from '../constants/fontFamilies';
-import SvgComponent from '../components/SvgComponent';
-import {svgFile} from '../constants/svgFiles';
 
 const TabNavigator = () => {
   const Tab = createBottomTabNavigator();
   return (
     <Tab.Navigator
       screenOptions={({route}) => ({
+        tabBarHideOnKeyboard: true,
         headerShown: false,
         tabBarShowLabel: false,
         tabBarStyle: {
