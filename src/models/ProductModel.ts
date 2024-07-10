@@ -4,7 +4,7 @@ export interface ProductModel {
   id: string;
   type: string;
   description: string;
-  price: string;
+  price: number;
   title: string;
   imageUrl: string;
   files: string[];
@@ -12,6 +12,7 @@ export interface ProductModel {
   createdAt: number;
   updatedAt: number;
   rate: string;
+  selled: number;
 }
 
 export interface SubProduct {

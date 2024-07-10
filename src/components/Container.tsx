@@ -21,10 +21,11 @@ type Props = {
   left?: ReactNode;
   right?: ReactNode;
   isScroll?: boolean;
+  bottomComponent?: ReactNode;
 };
 
 const Container = (props: Props) => {
-  const {children, title, back, left, right, isScroll} = props;
+  const {children, title, back, left, right, isScroll, bottomComponent} = props;
 
   const navigation = useNavigation();
 
@@ -90,6 +91,7 @@ const Container = (props: Props) => {
       ) : (
         <View style={[globalStyles.container]}>{children}</View>
       )}
+      {bottomComponent && bottomComponent}
     </SafeAreaView>
   );
 };

@@ -8,6 +8,7 @@ import {fontFamilies} from '../../../constants/fontFamilies';
 import {productRef} from '../../../firebase/firebaseConfig';
 import {ProductModel} from '../../../models/ProductModel';
 import {useNavigation} from '@react-navigation/native';
+import firestore from '@react-native-firebase/firestore';
 
 type Props = {};
 
@@ -37,6 +38,15 @@ const PopularProduct = (props: Props) => {
       });
   }, []);
 
+  const handleUpdateProduct = () => {
+    products.forEach(async item => {
+      await firestore()
+        .collection('products')
+        .doc(item.id)
+        .update({selled: Math.floor(Math.random() * 100)});
+    });
+  };
+
   return (
     <View style={{flex: 1}}>
       <Tabbar
@@ -44,7 +54,7 @@ const PopularProduct = (props: Props) => {
         tabbarStylesProps={{paddingHorizontal: 16}}
         titleStyleProps={{fontFamily: fontFamilies.poppinsBold, fontSize: 20}}
         renderSeemore={<TextComponent text="View all" color={colors.gray2} />}
-        onSeeMore={() => {}}
+        // onSeeMore={handleUpdateProduct}
       />
 
       {products.length > 0 &&

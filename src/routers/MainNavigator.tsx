@@ -3,10 +3,12 @@ import React from 'react';
 import {
   AddPayment,
   CartScreen,
+  FilterScreen,
   MapScreen,
   Payment,
   ProductDetail,
   RatingScreen,
+  ResultScreen,
 } from '../screens';
 import TabNavigator from './TabNavigator';
 
@@ -25,6 +27,8 @@ const MainNavigator = () => {
       <Stack.Screen name="Payment" component={Payment} />
       <Stack.Screen name="AddPayment" component={AddPayment} />
       <Stack.Screen name="MapScreen" component={MapScreen} />
+      <Stack.Screen name="FilterScreen" component={FilterScreen} />
+      <Stack.Screen name="ResultScreen" component={ResultScreen} />
     </Stack.Navigator>
   );
 };

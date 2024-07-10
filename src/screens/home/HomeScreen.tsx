@@ -12,7 +12,7 @@ import OffersList from './components/OffersList';
 import PopularProduct from './components/PopularProduct';
 import {useStatusBar} from '../../utils/useStatusBar';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}: any) => {
   useEffect(() => {
     if (Platform.OS === 'android') {
       PermissionsAndroid.requestMultiple([
@@ -67,7 +67,7 @@ const HomeScreen = () => {
                 styles={{width: 48, height: 48}}
                 icon={<Setting4 variant="TwoTone" size={24} color="white" />}
                 color="black"
-                onPress={() => {}}
+                onPress={() => navigation.navigate('FilterScreen')}
               />
             </Row>
           </Section>

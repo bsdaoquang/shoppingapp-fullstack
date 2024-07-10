@@ -65,7 +65,7 @@ const ProductItem = (props: Props) => {
           numberOfLine={1}
         />
         <TextComponent
-          text={`$${product.price}`}
+          text={`$${product.price.toLocaleString()}`}
           size={20}
           font={fontFamilies.poppinsSemiBold}
         />

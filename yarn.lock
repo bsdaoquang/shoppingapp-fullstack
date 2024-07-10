@@ -9355,6 +9355,7 @@ __metadata:
     react-redux: ^9.1.2
     react-test-renderer: 18.2.0
     redux: ^5.0.1
+    rn-range-slider: ^2.2.2
     typescript: 5.0.4
   languageName: unknown
   linkType: soft
@@ -9378,6 +9379,13 @@ __metadata:
   bin:
     rimraf: ./bin.js
   checksum: 3ea587b981a19016297edb96d1ffe48af7e6af69660e3b371dbfc73722a73a0b0e9be5c88089fbeeb866c389c1098e07f64929c7414290504b855f54f901ab10
+  languageName: node
+  linkType: hard
+
+"rn-range-slider@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "rn-range-slider@npm:2.2.2"
+  checksum: 6d9273ff103584319d0095794ee21da48c49609978321677e22c9d1d2eb22ce7fd72228382a8777828fac7b646eb814cee4e2c764e44f11cb92a7d5936ded529
   languageName: node
   linkType: hard
 

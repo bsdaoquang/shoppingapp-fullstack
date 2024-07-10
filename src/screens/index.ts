@@ -8,9 +8,11 @@ import AddPayment from "./cart/AddPayment";
 import CartScreen from "./cart/CartScreen";
 import MyOrder from "./cart/MyOrder";
 import Payment from "./cart/Payment";
+import FilterScreen from "./home/FilterScreen";
 import HomeScreen from "./home/HomeScreen";
 import ProductDetail from "./home/ProductDetail";
 import RatingScreen from "./home/RatingScreen";
+import ResultScreen from "./home/ResultScreen";
 import NotificationsScreen from "./notifications/NotificationsScreen";
 import ProfileScreen from "./profiles/ProfileScreen";
 
@@ -29,5 +31,7 @@ export {
   MyOrder,
   Payment,
   AddPayment,
-  MapScreen
+  MapScreen,
+  FilterScreen,
+  ResultScreen
 };
