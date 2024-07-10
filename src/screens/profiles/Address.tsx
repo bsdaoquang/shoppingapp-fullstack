@@ -1,12 +1,15 @@
-import {Input, Section, colors} from '@bsdaoquang/rncomponent';
+import {Col, Input, Row, Section, Space, colors} from '@bsdaoquang/rncomponent';
 import Geolocation from '@react-native-community/geolocation';
-import {SearchNormal1} from 'iconsax-react-native';
+import {ArrowRight2, SearchNormal1} from 'iconsax-react-native';
 import React, {useEffect, useState} from 'react';
 import {Container, TextComponent} from '../../components';
 import {fontFamilies} from '../../constants/fontFamilies';
 import {hereConfig} from '../../../hereconfig';
 import axios from 'axios';
 import {LocationModel} from '../../models/LocationModel';
+import {add, debounce} from 'lodash';
+import {FlatList, TouchableOpacity, View} from 'react-native';
+
 const Address = ({navigation}: any) => {
   const [searchKey, setSearchKey] = useState('');
   const [position, setPosition] = useState<{
@@ -19,6 +22,7 @@ const Address = ({navigation}: any) => {
   useEffect(() => {
     Geolocation.getCurrentPosition(
       position => {
+        console.log(position);
         setPosition({
           lat: position.coords.latitude,
           long: position.coords.longitude,
@@ -34,7 +38,8 @@ const Address = ({navigation}: any) => {
     if (!searchKey) {
       setLocations([]);
     } else {
-      handleSearchLocation();
+      const handleSearch = debounce(handleSearchLocation, 500);
+      handleSearch();
     }
   }, [searchKey]);
 
@@ -63,6 +68,18 @@ const Address = ({navigation}: any) => {
 
   const handleSearchLocation = async () => {
     const api = `https://autocomplete.search.hereapi.com/v1/autocomplete?q=${searchKey}&apiKey=${hereConfig.apiKey}`;
+
+    try {
+      const res = await axios(api);
+
+      if (res && res.status === 200 && res.data) {
+        const items = res.data.items;
+
+        setLocations(items);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -77,10 +94,69 @@ const Address = ({navigation}: any) => {
           inline
         />
       </Section>
-      <Section>
-        <TextComponent text="My address" font={fontFamilies.poppinsMedium} />
-        <TextComponent text={address ? address.title : ''} />
-      </Section>
+
+      <FlatList
+        showsVerticalScrollIndicator={false}
+        ListHeaderComponent={
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('MapScreen', {
+                position: address?.position,
+              });
+            }}
+            style={{paddingHorizontal: 16}}>
+            <TextComponent
+              text={`Vị trí hiện tại`}
+              font={fontFamilies.poppinsMedium}
+            />
+            <TextComponent
+              text={address?.title ?? ''}
+              size={12}
+              color={colors.gray}
+            />
+          </TouchableOpacity>
+        }
+        data={locations}
+        ListEmptyComponent={
+          <Section
+            styles={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <TextComponent text="Data not found" />
+          </Section>
+        }
+        renderItem={({item}) => (
+          <Row
+            onPress={async () => {
+              const api = `https://lookup.search.hereapi.com/v1/lookup?id=${item.id}&apiKey=${hereConfig.apiKey}`;
+
+              try {
+                const res = await axios(api);
+                if (res && res.status === 200 && res.data) {
+                  navigation.navigate('MapScreen', {
+                    position: res.data?.position,
+                  });
+                }
+              } catch (error) {
+                console.log(error);
+              }
+            }}
+            styles={{
+              marginHorizontal: 16,
+              paddingVertical: 12,
+              borderBottomColor: colors.gray300,
+              borderBottomWidth: 1,
+            }}>
+            <Col>
+              <TextComponent
+                text={item.title}
+                font={fontFamilies.poppinsMedium}
+              />
+              <TextComponent text={`4.5 Km`} size={12} color={colors.gray} />
+            </Col>
+            <Space width={12} />
+            <ArrowRight2 size={22} color={colors.gray} />
+          </Row>
+        )}
+      />
     </Container>
   );
 };

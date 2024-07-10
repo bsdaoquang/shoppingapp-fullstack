@@ -3,6 +3,7 @@ import React from 'react';
 import {
   AddPayment,
   CartScreen,
+  MapScreen,
   Payment,
   ProductDetail,
   RatingScreen,
@@ -23,6 +24,7 @@ const MainNavigator = () => {
       <Stack.Screen name="CartScreen" component={CartScreen} />
       <Stack.Screen name="Payment" component={Payment} />
       <Stack.Screen name="AddPayment" component={AddPayment} />
+      <Stack.Screen name="MapScreen" component={MapScreen} />
     </Stack.Navigator>
   );
 };

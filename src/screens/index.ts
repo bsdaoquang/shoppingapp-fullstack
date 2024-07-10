@@ -1,3 +1,4 @@
+import MapScreen from "./MapView";
 import HomeAuth from "./auth/HomeAuth";
 import Login from "./auth/Login";
 import Result from "./auth/Result";
@@ -27,5 +28,6 @@ export {
   RatingScreen,
   MyOrder,
   Payment,
-  AddPayment
+  AddPayment,
+  MapScreen
 };

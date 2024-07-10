@@ -1,6 +1,6 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {ProfileScreen} from '../screens';
+import {MapScreen, ProfileScreen} from '../screens';
 import Address from '../screens/profiles/Address';
 
 const ProfileNavigator = () => {
